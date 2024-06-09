@@ -6,10 +6,10 @@
     </section>
     <main class="flex flex-col gap-14 container mx-auto max-w-[1280px] px-4 py-10">
         <div class="flex max-lg:flex-col gap-6" id="tabs">
-            <ul class="w-full lg:w-1/3 bg-white rounded-xl p-4 flex flex-col gap-4">
-                <div class="flex items-center justify-center rounded-xl bg-[#754133]/50 h-[260px]">
+            <ul class="w-full h-min lg:w-1/3 bg-white rounded-xl p-4 flex flex-col gap-4">
+                {{-- <div class="flex items-center justify-center rounded-xl bg-[#754133]/50 h-[260px]">
                     <p>Фото профиля</p>
-                </div>
+                </div> --}}
                 <li class="w-fit">
                     <a href="{{ route('profile') }}" class="flex items-center gap-2">
                         <div class="flex items-center justify-center w-10 h-10 p-2 bg-black/10 rounded-full">
@@ -72,8 +72,8 @@
                             class="w-full md:w-1/2 rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-2"
                             placeholder="Город">
                     </div>
-                    <input type="file" name="photo"
-                        class="rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-2 w-full">
+                    {{-- <input type="file" name="photo"
+                        class="rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-2 w-full"> --}}
                     <div class="flex items-center max-md:flex-col gap-4 w-full">
                         <div class="flex flex-col items-center gap-2 w-full md:w-1/2">
                             <p class="font-PoiretOne text-2xl">Пол</p>
@@ -104,7 +104,7 @@
                 @foreach ($likes as $item)
                     @foreach ($item->positions as $position)
                         <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                            <a href="product.html" class="hover:animate-pulse">
+                            <a href="{{ route('product', ['product_id' => $position->id]) }}" class="hover:animate-pulse">
                                 <img src="{{ asset($position->photo) }}" alt=""
                                     class="w-full border border-black border-dashed rounded-xl">
                             </a>

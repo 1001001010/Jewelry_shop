@@ -20,9 +20,13 @@
             @endguest
         </nav>
         <div class="flex items-center gap-2">
-            <button class="max-md:hidden">
-                <img src="{{ asset('Images/header/search.png') }}" alt="" class="w-7 h-7">
-            </button>
+            <form action="{{ route('search') }}" method="POST">
+                @csrf
+                <input type="text" name="word">
+                <button class="max-md:hidden" type="submit">
+                    <img src="{{ asset('Images/header/search.png') }}" alt="" class="w-7 h-7">
+                </button>
+            </form>
             <a href="{{ route('profile') }}">
                 <img src="{{ asset('Images/header/profile.png') }}" alt="" class="w-7 h-7">
             </a>

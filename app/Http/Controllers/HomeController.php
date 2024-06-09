@@ -64,4 +64,11 @@ class HomeController extends Controller
     
         return view('catalog', compact('categories', 'positions', 'basket'));
     }
+    public function search(Request $request) {
+        $word = $request->word;
+        $positions = Position::where('name', 'like', "%{$word}%")->orderBy('id')->get();
+        $category = Category::get();
+        $basket = Basket::where('user_id', Auth::user()->id)->pluck('positions_id')->all();
+        return view('catalog', ['categories' => $category, 'positions' => $positions, 'basket' => $basket]);
+    }
 }
