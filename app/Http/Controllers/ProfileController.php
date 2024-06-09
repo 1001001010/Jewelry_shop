@@ -15,11 +15,13 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     public function profile()
+    // Открытие профиля
     {
         return view('profile');    
     }
 
     public function edit_profile(Request $request)
+    // Редактирование профиля
     {
         // $request->validate([
         //     'name' => ['string', 'max:255'],

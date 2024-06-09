@@ -11,9 +11,8 @@
 
 <body class="flex flex-col min-h-screen font-Jost bg-[#885041]/20 text-[#111111] text-xl">
     @include('components.header')
-    <main class="flex flex-col gap-14 container mx-auto max-w-[1280px] px-4 py-10">
-        @yield('content')
-    </main>
+    @yield('content')
+
     @include('components.footer')
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"

@@ -1,6 +1,6 @@
 <header class="flex w-full bg-white py-4 relative">
     <div class="container mx-auto max-w-[1280px] px-4 flex items-center justify-between">
-        <a href="index.html" class="text-2xl md:text-2xl font-Comfortaa">BEYOND</a>
+        <a href="{{ route('index') }}" class="text-2xl md:text-2xl font-Comfortaa">BEYOND</a>
         <nav id="menu"
             class="flex items-center gap-4 z-[4] transition-all duration-500 max-lg:border-t max-lg:border-[#885041] max-lg:flex-col max-lg:absolute max-lg:top-0 max-lg:-translate-y-full max-lg:left-0 max-lg:bg-white max-lg:py-6 max-lg:w-full">
             <a href="{{ route('catalog') }}"
