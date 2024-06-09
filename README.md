@@ -14,5 +14,8 @@
 - Создать файл конфигурации с примера `Cp .env.example .env`
 >*Файл .env* <br> - Отредактировать файл конфигурации
 - Создать ключ приложения `php artisan key:generate`
+- Создать хранилище `php artisan storage:link`
 - Мигрировать таблицы `php artisan migrate`
 - Запустить приложения `npm run dev` и `php artisan serve`
+- Создание админа `php artisan db:seed`
+- Данные от админа Логин: `admin@gmail.com` Пароль: `00000000`
