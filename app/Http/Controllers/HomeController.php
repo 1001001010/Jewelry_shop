@@ -19,10 +19,9 @@ class HomeController extends Controller
     {
         // Открытие каталога
         $category = Category::get();
-        $potition = Position::orderBy('created_at', 'DESC')->get();
-        // $basket = Basket::where('user_id', Auth::user()->id)->get();
-        // dd($basket);
-        return view('catalog', ['categories' => $category, 'positions' => $potition]);
+        $positions = Position::orderBy('created_at', 'DESC')->get();
+        $basket = Basket::where('user_id', Auth::user()->id)->pluck('positions_id')->all();
+        return view('catalog', ['categories' => $category, 'positions' => $positions, 'basket' => $basket]);
     }
     public function about()
     {

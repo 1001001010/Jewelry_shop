@@ -22,7 +22,7 @@ class Position extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function basket() 
+    public function basket()
     {
         return $this->belongsTo(Basket::class);
     }

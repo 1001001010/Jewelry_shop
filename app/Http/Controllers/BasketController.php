@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Basket;
+use App\Models\Position;
 use Auth;
 
 class BasketController extends Controller
@@ -22,5 +23,16 @@ class BasketController extends Controller
             Basket::create($data);
         }
         return redirect()->back();
+    }
+    public function open_basket()
+    {
+        $baskets = Basket::with('positions')->where('user_id', Auth::user()->id)->get();  
+        $summ = 0; 
+        foreach ($baskets as $basket) {
+            foreach ($basket->positions as $position) {
+                $summ += $position->price;
+            }
+        };
+        return view('basket', ['baskets' => $baskets, 'summ' => $summ]);
     }
 }

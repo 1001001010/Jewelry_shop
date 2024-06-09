@@ -11,14 +11,16 @@
                 <img src="{{ asset($product->photo) }}" alt="" class="rounded-xl w-full">
             </div>
             <div class="w-full lg:w-1/2 flex flex-col gap-6 p-4 rounded-xl bg-white">
-                <div class="flex items-center gap-4 self-end">
-                    <a href="edit.html" class="w-8 h-8">
-                        <img src="{{ asset('Images/products/edit.svg') }}" alt="">
-                    </a>
-                    <button class="w-8 h-8">
-                        <img src="{{ asset('Images/products/delete.svg') }}" alt="">
-                    </button>
-                </div>
+                @if (Auth::user() and Auth::user()->is_admin == 1)
+                    <div class="flex items-center gap-4 self-end">
+                        <a href="edit.html" class="w-8 h-8">
+                            <img src="{{ asset('Images/products/edit.svg') }}" alt="">
+                        </a>
+                        <a href="{{ route('deleteTovar', ['product_id' => $product->id]) }}" class="w-8 h-8">
+                            <img src="{{ asset('Images/products/delete.svg') }}" alt="">
+                        </a>
+                    </div>
+                @endif
                 <p>Артикул {{ $product->id }}</p>
                 <p class="text-2xl font-Comfortaa">{{ $product->name }}</p>
                 <div class="flex flex-col gap-2">
@@ -51,19 +53,18 @@
                         </div>
                     </div>
                 </div>
-                <button
-                    class="w-full md:w-[260px] px-4 py-1 rounded-xl bg-[#885041] text-white transition-all duration-500 border border-[#885041] hover:text-[#885041] hover:bg-transparent text-center">В
-                    корзину</button>
-
                 @if ($basket)
                     <a href="{{ route('ToBasket', ['product_id' => $product->id]) }}"
-                        class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        избранном</a>
+                        class="w-full md:w-[260px] px-4 py-1 rounded-xl bg-[#885041] text-white transition-all duration-500 border border-[#885041] hover:text-[#885041] hover:bg-transparent text-center">В
+                        корзинe</a>
                 @else
                     <a href="{{ route('ToBasket', ['product_id' => $product->id]) }}"
-                        class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        избранное</a>
+                        class="w-full md:w-[260px] px-4 py-1 rounded-xl bg-[#885041] text-white transition-all duration-500 border border-[#885041] hover:text-[#885041] hover:bg-transparent text-center">В
+                        корзину</a>
                 @endif
+                <a href="{{ route('ToBasket', ['product_id' => $product->id]) }}"
+                    class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
+                    избранное</a>
             </div>
         </div>
     </main>

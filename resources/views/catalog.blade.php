@@ -56,16 +56,21 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full lg:w-2/3 h-fit">
                 @foreach ($positions as $item)
                     <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                        <p>{{ $item->basket }}</p>
                         <a href="{{ route('product', ['product_id' => $item->id]) }}" class="hover:animate-pulse">
                             <img src="{{ asset($item->photo) }}" alt=""
                                 class="w-full border border-black border-dashed rounded-xl">
                         </a>
                         <p class="font-Comfortaa">{{ $item->name }}</p>
-                        <p class="text-lg">от {{ $item->price }} рублей </p>
-                        <a href="{{ route('ToBasket', ['product_id' => $item->id]) }}"
-                            class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                            корзину</a>
+                        <p class="text-lg">от {{ $item->price }} рублей </p>
+                        @if (in_array($item->id, $basket))
+                            <a href="{{ route('ToBasket', ['product_id' => $item->id]) }}"
+                                class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">Удалить из
+                                корзины</a>
+                        @else
+                            <a href="{{ route('ToBasket', ['product_id' => $item->id]) }}"
+                                class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
+                                корзину</a>
+                        @endif
                     </div>
                 @endforeach
             </div>

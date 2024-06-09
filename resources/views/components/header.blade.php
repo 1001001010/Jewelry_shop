@@ -29,7 +29,7 @@
             <a href="Pages/favourites.html">
                 <img src="{{ asset('Images/header/favourites.png') }}" alt="" class="w-7 h-7">
             </a>
-            <a href="Pages/cart.html">
+            <a href="{{ route('OpenBasket') }}">
                 <img src="{{ asset('Images/header/cart.png') }}" alt="" class="w-7 h-7">
             </a>
             <button id="toggler" class="lg:hidden">

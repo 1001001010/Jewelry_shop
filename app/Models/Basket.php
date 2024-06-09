@@ -18,8 +18,8 @@ class Basket extends Model
     {
         return $this->hasOne(User::class);
     }
-    public function positions() 
+    public function positions()
     {
-        return $this->hasMany(Position::class);
+        return $this->hasMany(Position::class, 'id', 'positions_id');
     }
 }

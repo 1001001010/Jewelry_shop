@@ -59,4 +59,9 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+    public function delete_position($product_id)
+    {
+        Position::where('id', $product_id)->delete();
+        return route('catalog');
+    }
 }
