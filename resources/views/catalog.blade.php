@@ -12,9 +12,9 @@
                 <div class="flex flex-col gap-2">
                     <p>Тип украшения</p>
                     <select class="w-full rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-1">
-                        <option value="Украшение 1">Украшение 1</option>
-                        <option value="Украшение 2">Украшение 2</option>
-                        <option value="Украшение 3">Украшение 3</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="flex flex-col gap-2">
