@@ -54,8 +54,16 @@
                 <button
                     class="w-full md:w-[260px] px-4 py-1 rounded-xl bg-[#885041] text-white transition-all duration-500 border border-[#885041] hover:text-[#885041] hover:bg-transparent text-center">В
                     корзину</button>
-                <button class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                    избранное</button>
+
+                @if ($basket)
+                    <a href="{{ route('ToBasket', ['product_id' => $product->id]) }}"
+                        class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
+                        избранном</a>
+                @else
+                    <a href="{{ route('ToBasket', ['product_id' => $product->id]) }}"
+                        class="w-full md:w-[260px] px-4 py-1 rounded-xl border border-black border-dashed text-center">В
+                        избранное</a>
+                @endif
             </div>
         </div>
     </main>

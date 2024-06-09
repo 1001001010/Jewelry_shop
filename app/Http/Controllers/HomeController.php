@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Position;
+use App\Models\Basket;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -18,6 +20,8 @@ class HomeController extends Controller
         // Открытие каталога
         $category = Category::get();
         $potition = Position::orderBy('created_at', 'DESC')->get();
+        // $basket = Basket::where('user_id', Auth::user()->id)->get();
+        // dd($basket);
         return view('catalog', ['categories' => $category, 'positions' => $potition]);
     }
     public function about()
@@ -33,6 +37,7 @@ class HomeController extends Controller
     public function product($product_id)
     {
         $procut = Position::where('id', $product_id)->first();
-        return view('product', ['product' => $procut]);
+        $basket = Basket::where('user_id', Auth::user()->id)->where('positions_id', $product_id)->first();
+        return view('product', ['product' => $procut, 'basket' => $basket]);
     }
 }

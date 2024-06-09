@@ -56,6 +56,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full lg:w-2/3 h-fit">
                 @foreach ($positions as $item)
                     <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
+                        <p>{{ $item->basket }}</p>
                         <a href="{{ route('product', ['product_id' => $item->id]) }}" class="hover:animate-pulse">
                             <img src="{{ asset($item->photo) }}" alt=""
                                 class="w-full border border-black border-dashed rounded-xl">
