@@ -44,6 +44,7 @@ class HomeController extends Controller
 
     public function filter(Request $request)
     {
+        // Фильтрация католога
         $categories = Category::all();
         $positions = Position::query();
 
@@ -65,6 +66,7 @@ class HomeController extends Controller
         return view('catalog', compact('categories', 'positions', 'basket'));
     }
     public function search(Request $request) {
+        // Поиск
         $word = $request->word;
         $positions = Position::where('name', 'like', "%{$word}%")->orderBy('id')->get();
         $category = Category::get();

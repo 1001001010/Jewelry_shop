@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\File;
 use App\Models\Position;
 
 class AdminController extends Controller
@@ -61,16 +62,23 @@ class AdminController extends Controller
     }
     public function delete_position($product_id)
     {
+        // Удаление товара
+        $position = Position::where('id', $product_id)->first();
+        if ($position->photo) {
+            File::delete(public_path($position->photo));
+        }
         Position::where('id', $product_id)->delete();
-        return route('catalog');
+        return redirect()->route('catalog');
     }
     public function edit_position($position_id) 
     {
+        // Редактирование товара
         $positio = Position::where('id', $position_id)->first();
         return view('edit_product', ['position' => $positio]);
     }
     public function save_edit_position($position_id, Request $request)
     {
+        // Сохранение редактирования товара
         $validated = $request->validate([
             'name' => 'required|string',
             'price' => 'required|integer',
