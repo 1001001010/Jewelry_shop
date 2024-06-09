@@ -16,6 +16,7 @@ Route::get('/product/{product_id}', [HomeController::class, 'product'])->name('p
 Route::post('/profile/edit', [ProfileController::class, 'edit_profile'])->middleware(['auth', 'verified'])->name('editProfile');
 Route::get('/basket/add/{product_id}', [BasketController::class, 'add_basket'])->name('ToBasket')->middleware(['auth', 'verified']);
 Route::get('/basket/open', [BasketController::class, 'open_basket'])->name('OpenBasket')->middleware(['auth', 'verified']);
+Route::post('/catalog/filter', [HomeController::class, 'filter'])->name('catalog.filter');
 
 Route::get('/liked/add/{product_id}', [BasketController::class, 'add_liked'])->name('ToLike')->middleware(['auth', 'verified']);
 Route::get('/liked/open', [BasketController::class, 'open_liked'])->name('OpenLike')->middleware(['auth', 'verified']);

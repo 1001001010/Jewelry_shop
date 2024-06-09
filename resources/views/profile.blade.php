@@ -11,7 +11,7 @@
                     <p>Фото профиля</p>
                 </div>
                 <li class="w-fit">
-                    <a href="#tab-1" class="flex items-center gap-2">
+                    <a href="{{ route('profile') }}" class="flex items-center gap-2">
                         <div class="flex items-center justify-center w-10 h-10 p-2 bg-black/10 rounded-full">
                             <img src="{{ asset('Images/header/profile.png') }}" alt="">
                         </div>
@@ -28,14 +28,6 @@
                         </a>
                     </li>
                 @endif
-                <li class="w-fit">
-                    <a href="#tab-2" class="flex items-center gap-2">
-                        <div class="flex items-center justify-center w-10 h-10 p-2 bg-black/10 rounded-full">
-                            <img src="{{ asset('Images/header/cart.png') }}" alt="">
-                        </div>
-                        <span>Мои покупки</span>
-                    </a>
-                </li>
                 <li class="w-fit">
                     <a href="{{ route('logout') }}" class="flex items-center gap-2"
                         onclick="event.preventDefault();
@@ -80,6 +72,8 @@
                             class="w-full md:w-1/2 rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-2"
                             placeholder="Город">
                     </div>
+                    <input type="file" name="photo"
+                        class="rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-2 w-full">
                     <div class="flex items-center max-md:flex-col gap-4 w-full">
                         <div class="flex flex-col items-center gap-2 w-full md:w-1/2">
                             <p class="font-PoiretOne text-2xl">Пол</p>

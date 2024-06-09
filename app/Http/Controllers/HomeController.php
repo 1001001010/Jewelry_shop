@@ -41,4 +41,27 @@ class HomeController extends Controller
         $like = Like::where('user_id', Auth::user()->id)->where('positions_id', $product_id)->first();
         return view('product', ['product' => $procut, 'basket' => $basket, 'like' => $like]);
     }
+
+    public function filter(Request $request)
+    {
+        $categories = Category::all();
+        $positions = Position::query();
+
+        $min_value = request()->get('min_value');   
+        $max_value = request()->get('max_value');
+
+        if ($request->has('category')) {
+            $positions->where('category_id', $request->category);
+        }
+    
+        if ($request->has('type')) {
+            $positions->where('metall', $request->input('type'));
+        }
+
+        $positions = $positions->orderBy('created_at', 'DESC')->get();
+    
+        $basket = Basket::where('user_id', Auth::user()->id)->pluck('positions_id')->all();
+    
+        return view('catalog', compact('categories', 'positions', 'basket'));
+    }
 }

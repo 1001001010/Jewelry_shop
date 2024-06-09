@@ -27,19 +27,6 @@ class ProfileController extends Controller
     public function edit_profile(Request $request)
     // Редактирование профиля
     {
-        // $request->validate([
-        //     'name' => ['string', 'max:255'],
-        //     'surname' => ['string', 'max:255'],
-        //     'fathername' => ['string', 'max:255'],
-        //     'number' => ['string', 'max:255'],
-        //     'city' => ['string', 'max:255'],
-        //     'gender' => ['string', 'max:255'],
-        //     'birthday' => ['string', 'max:255'],
-        //     'email' => ['string', 'lowercase', 'email', 'max:255', 'unique:users'],
-        //     'password' => [Rules\Password::defaults()],
-        // ]);
-        
-
         $user = Auth::user();
     
         $user->name = $request->name;
