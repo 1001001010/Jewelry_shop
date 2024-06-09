@@ -107,54 +107,18 @@
                 </form>
             </div>
             <div id="tab-2" class="w-full lg:w-2/3 bg-white rounded-xl p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                </div>
+                @foreach ($likes as $item)
+                    @foreach ($item->positions as $position)
+                        <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
+                            <a href="product.html" class="hover:animate-pulse">
+                                <img src="{{ asset($position->photo) }}" alt=""
+                                    class="w-full border border-black border-dashed rounded-xl">
+                            </a>
+                            <p class="font-Comfortaa">{{ $position->name }}</p>
+                            <p class="text-lg">от {{ $position->price }} рублей </p>
+                        </div>
+                    @endforeach
+                @endforeach
             </div>
         </div>
     </main>

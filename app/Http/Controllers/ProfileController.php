@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Basket;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
@@ -18,9 +19,9 @@ class ProfileController extends Controller
     public function profile()
     // Открытие профиля
     {
-        // $favourites = Basket::where('user_id', Auth::user()->id)->get();
+        $likes = Like::with('positions')->where('user_id', Auth::user()->id)->get();
         // return view('profile', ['favourites' => $favourites]);    
-        return view('profile');
+        return view('profile', ['likes' => $likes]);
     }
 
     public function edit_profile(Request $request)

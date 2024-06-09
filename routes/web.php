@@ -17,8 +17,13 @@ Route::post('/profile/edit', [ProfileController::class, 'edit_profile'])->middle
 Route::get('/basket/add/{product_id}', [BasketController::class, 'add_basket'])->name('ToBasket')->middleware(['auth', 'verified']);
 Route::get('/basket/open', [BasketController::class, 'open_basket'])->name('OpenBasket')->middleware(['auth', 'verified']);
 
+Route::get('/liked/add/{product_id}', [BasketController::class, 'add_liked'])->name('ToLike')->middleware(['auth', 'verified']);
+Route::get('/liked/open', [BasketController::class, 'open_liked'])->name('OpenLike')->middleware(['auth', 'verified']);
+
 Route::get('/admin', [AdminController::class, 'index'])->name('Admin')->middleware([IsAdmin::class]);
 Route::get('/delete/{product_id}', [AdminController::class, 'delete_position'])->name('deleteTovar')->middleware([IsAdmin::class]);
+Route::get('/edit/{product_id}', [AdminController::class, 'edit_position'])->name('EditTovar')->middleware([IsAdmin::class]);
+Route::post('/edit/{product_id}', [AdminController::class, 'save_edit_position'])->name('EditTovar')->middleware([IsAdmin::class]);
 Route::post('/admin/category/add', [AdminController::class, 'add_category'])->name('AddCategory')->middleware([IsAdmin::class]);
 Route::post('/admin/position/add', [AdminController::class, 'new_position'])->name('NewPosition')->middleware([IsAdmin::class]);
 

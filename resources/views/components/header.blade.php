@@ -26,7 +26,7 @@
             <a href="{{ route('profile') }}">
                 <img src="{{ asset('Images/header/profile.png') }}" alt="" class="w-7 h-7">
             </a>
-            <a href="Pages/favourites.html">
+            <a href="{{ route('OpenLike') }}">
                 <img src="{{ asset('Images/header/favourites.png') }}" alt="" class="w-7 h-7">
             </a>
             <a href="{{ route('OpenBasket') }}">

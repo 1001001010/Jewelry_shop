@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Basket;
+use App\Models\Like;
 use App\Models\Position;
 use Auth;
 
@@ -34,5 +35,25 @@ class BasketController extends Controller
             }
         };
         return view('basket', ['baskets' => $baskets, 'summ' => $summ]);
+    }
+    public function add_liked($product_id)
+    {
+        $status = Like::where('user_id', Auth::user()->id)->where('positions_id', $product_id)->first();
+        if ($status) {
+            Like::where('id', $status->id)->delete();
+        }
+        else {
+            $data = [
+                'user_id' => Auth::user()->id,
+                'positions_id' => $product_id,
+            ];
+            Like::create($data);
+        }
+        return redirect()->back();
+    }
+    public function open_liked()
+    {
+        $likes = Like::with('positions')->where('user_id', Auth::user()->id)->get();  
+        return view('favouritise', ['likes' => $likes]);
     }
 }

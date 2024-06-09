@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Position;
 use App\Models\Basket;
+use App\Models\Like;
 use Auth;
 
 class HomeController extends Controller
@@ -37,6 +38,7 @@ class HomeController extends Controller
     {
         $procut = Position::where('id', $product_id)->first();
         $basket = Basket::where('user_id', Auth::user()->id)->where('positions_id', $product_id)->first();
-        return view('product', ['product' => $procut, 'basket' => $basket]);
+        $like = Like::where('user_id', Auth::user()->id)->where('positions_id', $product_id)->first();
+        return view('product', ['product' => $procut, 'basket' => $basket, 'like' => $like]);
     }
 }
