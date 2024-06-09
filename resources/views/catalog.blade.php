@@ -20,8 +20,8 @@
                 <div class="flex flex-col gap-2">
                     <p>Металл</p>
                     <select class="w-full rounded-xl border border-[#885041]/50 focus:outline-none px-4 py-1">
-                        <option value="Металл 1">Металл 1</option>
-                        <option value="Металл 2">Металл 2</option>
+                        <option value="Металл 1">Розовое золото</option>
+                        <option value="Металл 2">Серебро</option>
                         <option value="Металл 3">Металл 3</option>
                     </select>
                 </div>
@@ -54,66 +54,19 @@
                     class="w-full px-4 py-1 rounded-xl bg-[#885041] text-white transition-all duration-500 border border-[#885041] hover:text-[#885041] hover:bg-transparent text-center">Применить</button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full lg:w-2/3 h-fit">
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
-                <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
-                    <a href="product.html" class="hover:animate-pulse">
-                        <img src="{{ asset('Images/products/1.png') }}" alt=""
-                            class="w-full border border-black border-dashed rounded-xl">
-                    </a>
-                    <p class="font-Comfortaa">КОЛЛЕКЦИЯ BALANCE</p>
-                    <p class="text-lg">от 443 000 рублей </p>
-                    <button class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
-                        корзину</button>
-                </div>
+                @foreach ($positions as $item)
+                    <div class="rounded-xl flex flex-col items-center text-center gap-4 bg-white p-4">
+                        <a href="{{ route('product', ['product_id' => $item->id]) }}" class="hover:animate-pulse">
+                            <img src="{{ asset($item->photo) }}" alt=""
+                                class="w-full border border-black border-dashed rounded-xl">
+                        </a>
+                        <p class="font-Comfortaa">{{ $item->name }}</p>
+                        <p class="text-lg">от {{ $item->price }} рублей </p>
+                        <a href="{{ route('ToBasket', ['product_id' => $item->id]) }}"
+                            class="w-full px-4 py-1 rounded-xl border border-black border-dashed text-center">В
+                            корзину</a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </main>

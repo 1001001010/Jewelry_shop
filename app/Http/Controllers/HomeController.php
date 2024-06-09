@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Position;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,8 @@ class HomeController extends Controller
     {
         // Открытие каталога
         $category = Category::get();
-        return view('catalog', ['categories' => $category]);
+        $potition = Position::orderBy('created_at', 'DESC')->get();
+        return view('catalog', ['categories' => $category, 'positions' => $potition]);
     }
     public function about()
     {
@@ -27,5 +29,10 @@ class HomeController extends Controller
     {
         // Открытие доставка и оплата
         return view('delivery');    
+    }
+    public function product($product_id)
+    {
+        $procut = Position::where('id', $product_id)->first();
+        return view('product', ['product' => $procut]);
     }
 }

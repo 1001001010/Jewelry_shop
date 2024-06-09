@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 
@@ -11,6 +12,8 @@ Route::get('/profile', [ProfileController::class, 'profile'])->middleware(['auth
 Route::get('/catalog', [HomeController::class, 'catalog'])->name('catalog');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/delivery', [HomeController::class, 'delivery'])->name('delivery');
+Route::get('/product/{product_id}', [HomeController::class, 'product'])->name('product');
+Route::get('/basket/add/{product_id}', [BasketController::class, 'add_basket'])->name('ToBasket');
 Route::post('/profile/edit', [ProfileController::class, 'edit_profile'])->middleware(['auth', 'verified'])->name('editProfile');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('Admin')->middleware([IsAdmin::class]);

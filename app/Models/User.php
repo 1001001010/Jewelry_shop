@@ -50,4 +50,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function basket()
+    {
+        return $this->hasOne(Basket::class);
+    }
 }
